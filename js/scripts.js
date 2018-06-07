@@ -2,16 +2,16 @@
 
 var romanNumerals = function(numeral)
 {
-
-
+  var userNumber = parseInt(numeral);
   var inputArray = numeral.split("").map(function(t){return parseInt(t)});
-  var limitBreak = parseInt(numeral);
   var onesArray = ["","I","II","III","IV","V","VI","VII","VIII","IX"];
   var tensArray = ["","X","XX","XXX","XL","L","LX","LXX","LXXX","XC"];
   var hundosArray = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM"];
   var thousandsArray = ["","M","MM","MMM"];
+  var lengthControl = inputArray.length;
 
-  if (limitBreak < 4000 || (inputArray.length > 4))
+
+  if (userNumber < 4000 && lengthControl <= 4)
   {
     if (inputArray.length === 1) //one character long
     {
@@ -52,8 +52,7 @@ var romanNumerals = function(numeral)
           var tripleOnes = onesArray[(inputArray[2])];
         }
       }
-      var preResult = tripleHundos.concat(tripleTens);
-      var results = preResult.concat(tripleOnes);
+      var results = tripleHundos.concat(tripleTens).concat(tripleOnes);
       return results;
       alert(results);
     }
@@ -78,9 +77,7 @@ var romanNumerals = function(numeral)
           var quadOnes = onesArray[(inputArray[3])];
         }
       }
-      var prePreResults = quadThousands.concat(quadHundos);
-      var preResult = prePreResults.concat(quadTens);
-      var results = preResult.concat(quadOnes);
+      var results = quadThousands.concat(quadHundos).concat(quadTens).concat(quadOnes);
       return results;
       alert(results);
     }
